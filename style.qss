@@ -1,0 +1,69 @@
+QPushButton
+{
+    font-family:Arial;
+    font-size:15pt;
+    color:white;
+    background-color:rgb(88, 183, 255);
+    border-radius:5px;
+}
+
+QPushButton:hover
+{
+    background-color:rgb(71, 135, 219);
+}
+
+QPushButton:pressed
+{
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}
+
+StartButton
+{
+    background-color:rgba(16, 231, 45, 0.781);
+    border-radius:10px;
+    padding-left:3px;
+    padding-top:3px;
+}
+
+StartButton:hover
+{
+    background-color:rgb(50, 143, 100);
+    border-radius:10px;
+    padding-left:20px;
+    padding-top:3px;
+}
+
+StopButton
+{
+    background-color:rgba(231, 217, 16, 0.781);
+    border-radius:10px;
+    padding-left:20px;
+    padding-top:3px;
+}
+
+StopButton:hover
+{
+    background-color:rgb(187, 185, 48);
+    border-radius:10px;
+    padding-left:20px;
+    padding-top:3px;
+}
+
+
+CloseButton
+{
+    background-color:rgba(231, 16, 16, 0.781);
+    border-radius:10px;
+    padding-left:20px;
+    padding-top:3px;
+}
+
+CloseButton:hover
+{
+    background-color:rgb(143, 50, 50);
+    border-radius:10px;
+    padding-left:20px;
+    padding-top:3px;
+}
