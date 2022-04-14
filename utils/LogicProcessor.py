@@ -2,6 +2,7 @@ import csv
 import copy
 import argparse
 import itertools
+import string
 from utils.Handmouse import Hand_mouse
 from utils.cvfpscalc import CvFpsCalc
 import cv2 as cv
@@ -25,12 +26,12 @@ class LogicProcessor(object):
     def get_args(self):
         parser = argparse.ArgumentParser()
         parser.add_argument("--device", type=int, default=0)
+        parser.add_argument("--debug", type=int, default=0)
         parser.add_argument("--width", help='cap width', type=int, default=960)
         parser.add_argument("--height",
                             help='cap height',
                             type=int,
                             default=540)
-
         parser.add_argument('--use_static_image_mode', action='store_true')
         parser.add_argument("--min_detection_confidence",
                             help='min_detection_confidence',
@@ -50,10 +51,11 @@ class LogicProcessor(object):
     def main_loop(self,global_HM):
         #print('main_loop')
         args = self.get_args()
-
-        cap_device = 0 #args.device
+        debug_mode = args.debug
+        cap_device = args.device
         cap_width = args.width
         cap_height = args.height
+        
 
         use_static_image_mode = args.use_static_image_mode
         min_detection_confidence = args.min_detection_confidence
@@ -110,7 +112,6 @@ class LogicProcessor(object):
         HM = global_HM
         self.noti_emit('start capture')
         while True:
-            
             fps = cvFpsCalc.get()
 
             # キー処理(ESC：終了) #################################################
@@ -205,13 +206,14 @@ class LogicProcessor(object):
                         )
                 else:
                     point_history.append([0, 0])
-
+            
                 debug_image =  draw_point_history(debug_image, point_history)
                 #debug_image =  draw_info(debug_image, fps, mode, number)
             else:
                 pass
             # 画面反映 #############################################################
-            cv.imshow('Hand Gesture Recognition', debug_image)
+            if debug_mode == 1:
+                cv.imshow('Hand Gesture Recognition', debug_image)
 
         cap.release()
         cv.destroyAllWindows()
